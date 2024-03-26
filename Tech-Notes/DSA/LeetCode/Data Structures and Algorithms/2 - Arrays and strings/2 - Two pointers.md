@@ -78,7 +78,7 @@ This algorithm is very efficient as not only does it run in $O(n)$, but it also
 > 
 > For example, given `nums = [1, 2, 4, 6, 8, 9, 14, 15]` and `target = 13`, return true because `4 + 9 = 13`.
 
-The brute force solution would be to iterate over all pairs of integers. Each number in the array can be paired with another number, so this would result in a time complexity of �(�2)O(n2), where �n is the length of the array. Because the array is sorted, we can use two pointers to improve to an �(�)O(n) time complexity.
+The brute force solution would be to iterate over all pairs of integers. Each number in the array can be paired with another number, so this would result in a time complexity of $O(n^2)$, where $n$ is the length of the array. Because the array is sorted, we can use two pointers to improve to an $O(n)$ time complexity.
 
 Let's use the example input. With two pointers, we start by looking at the first and last number. Their sum is `1 + 15 = 16`. Because `16 > target`, we need to make our current sum smaller. Therefore, we should move the `right` pointer. Now, we have `1 + 14 = 15`. Again, move the right pointer because the sum is too large. Now, `1 + 9 = 10`. Since the sum is too small, we need to make it bigger, which can be done by moving the `left` pointer. `2 + 9 = 11 < target`, so move it again. Finally, `4 + 9 = 13 = target`.
 
@@ -170,7 +170,7 @@ Similar to the first method we looked at, this method will have a linear time co
 
 > Example 3: Given two sorted integer arrays `arr1` and `arr2`, return a new array that combines both of them and is also sorted.
 
-The trivial approach would be to first combine both input arrays and then perform a sort. If we have `n = arr1.length + arr2.length`, then this gives a time complexity of �(�⋅log⁡�)O(n⋅logn) (the cost of sorting). This would be a good approach if the input arrays were not sorted, but because they are sorted, we can take advantage of the two pointers technique to improve to �(�)O(n).
+The trivial approach would be to first combine both input arrays and then perform a sort. If we have `n = arr1.length + arr2.length`, then this gives a time complexity of $O(n \cdot log n)$ (the cost of sorting). This would be a good approach if the input arrays were not sorted, but because they are sorted, we can take advantage of the two pointers technique to improve to $O(n)$.
 
 > In the explanation prior to this example, we declared `n = arr1.length` and `m = arr2.length`. Here, we are saying `n = arr1.length + arr2.length`. Why? Remember that when it comes to big O, we are allowed to define the variables as we see fit. We could certainly stick to using `n, m`. In that case, the time complexity of the sorting approach would be $O((n+m) \cdot log(m+n))$ and the time complexity of the approach we are about to cover would be $O(n+m)$. It doesn't really make a difference, but one justification we could give here is that since we are combining the arrays, the total length is a significant number, so it makes sense to represent it as `n`.
 
