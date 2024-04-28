@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 In C#, `null` represents the absence of a value or a reference. It is used in various contexts to denote that a variable, typically of a reference type, has not been assigned any object. Understanding how to properly handle `null` is essential for writing robust and error-free code.
 

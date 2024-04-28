@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 In C#, handling date and time is robustly supported by several classes, including `System.DateTime`, `System.TimeSpan`, `System.DateTimeOffset`, as well as the newer `DateOnly` and `TimeOnly` structures.
 

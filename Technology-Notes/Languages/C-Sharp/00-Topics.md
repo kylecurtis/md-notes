@@ -1,3 +1,8 @@
+---
+tags: 
+	- recipe 
+---
+
 A to-do list containing the general content to expect in this C# notebook.
 
 <br>

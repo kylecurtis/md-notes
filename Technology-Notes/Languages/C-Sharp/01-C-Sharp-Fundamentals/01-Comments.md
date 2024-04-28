@@ -1,5 +1,6 @@
-
-<br>
+---
+tags: [csharp]
+---
 
 In C#, comments are used to annotate the source code with explanations, making the code easier to understand for anyone reading it later, including the original author. Comments are non-executable parts of the code and are completely ignored by the compiler.
 

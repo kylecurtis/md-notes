@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 Floating-point types in C# are used to represent numbers that have fractional parts. They are essential for representing real-world quantities which can be integral or fractional, such as measurements and other calculations involving real numbers. C# provides three floating-point types: `float`, `double`, and `decimal`.
 

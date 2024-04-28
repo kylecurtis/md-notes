@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 Loops in C# are constructs that allow you to execute a block of code repeatedly under specific conditions. Understanding and effectively using loops is crucial for tasks that require repetitive actions, such as processing collections of data, repetitive calculations, or automated testing. C# provides several types of loops that cater to different scenarios: `for`, `foreach`, `while`, and `do-while`.
 

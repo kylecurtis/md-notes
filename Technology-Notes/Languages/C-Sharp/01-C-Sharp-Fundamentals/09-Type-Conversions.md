@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 In C#, type conversion is a fundamental concept that involves converting a value of one data type to another. This is particularly important when dealing with basic data types like integers (`int`), floating-point numbers (`float`, `double`), characters (`char`), and booleans (`bool`). Understanding how to perform these conversions correctly is crucial for data manipulation and ensuring code reliability.
 

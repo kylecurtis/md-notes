@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 In C#, the `char` type represents a single 16-bit Unicode character. It is used to store characters as values and is integral to handling text within programs. Understanding how to use the `char` type effectively is essential for manipulating text data, checking character properties, and converting characters.
 

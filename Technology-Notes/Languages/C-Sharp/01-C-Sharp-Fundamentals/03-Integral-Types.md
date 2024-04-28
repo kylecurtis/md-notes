@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 Integral types in C# are a category of data types that represent whole numbers, which can be either positive or negative. They are a fundamental aspect of the language, allowing you to perform a variety of mathematical and logical operations.
 

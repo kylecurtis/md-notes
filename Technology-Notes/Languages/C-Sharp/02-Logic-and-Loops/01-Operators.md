@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 In C#, operators are special symbols that specify what type of operation to perform on one or more operands. Understanding and using these operators effectively is essential for writing concise and efficient C# code. Operators in C# can be classified into several categories: arithmetic, relational, logical, bitwise, assignment, and others.
 

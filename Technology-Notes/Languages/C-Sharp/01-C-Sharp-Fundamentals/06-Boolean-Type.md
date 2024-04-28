@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 The `bool` type in C# is a fundamental data type used to represent truth values—`true` and `false`. It is a critical component in controlling the flow of execution through conditional statements and loops, and in managing logical operations that are central to programming logic and decision-making processes.
 

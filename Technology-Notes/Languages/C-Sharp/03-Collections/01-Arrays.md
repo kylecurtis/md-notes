@@ -1,4 +1,6 @@
-<br>
+---
+tags: [csharp]
+---
 
 Arrays in C# are a fundamental data structure that allows you to store a fixed-size sequential collection of elements of the same type. They are used to store collections of data in a single variable, and provide fast access to their elements.
 
