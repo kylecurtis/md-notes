@@ -1,4 +1,8 @@
-Here's a markdown note on the topic of variables and related concepts in algebra, formatted for use in Obsidian or similar markdown applications.
+---
+tags: [algebra]
+---
+
+Variables are fundamental symbols in algebra that represent unknown or variable quantities, allowing for the expression and solution of mathematical relationships and equations.
 
 <br>
 

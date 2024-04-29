@@ -1,3 +1,8 @@
+---
+tags: [algebra]
+---
+
+
 Understanding the properties of operations in algebra is crucial for simplifying expressions and solving equations efficiently. These properties apply to addition, multiplication, and their interactions with other operations.
 
 <br>
