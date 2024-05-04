@@ -2,7 +2,7 @@
 tags: [csharp]
 ---
 
-Arrays in C# are a fundamental data structure that allows you to store a fixed-size sequential collection of elements of the same type. They are used to store collections of data in a single variable, and provide fast access to their elements.
+Arrays in C# are a fundamental data structure used to store a fixed-size sequential collection of elements of the same type. They allow efficient indexed access to elements and are an essential part of data management in software development.
 
 <br>
 
@@ -14,7 +14,7 @@ Arrays in C# are a fundamental data structure that allows you to store a fixed-s
 
 <br>
 
-Declaration is the stage where you specify the type and name of a variable without necessarily assigning any value to it. This tells the compiler about the existence of the variable and its type, so it can allocate the appropriate amount of memory space when the program runs.
+Declaration involves specifying the type and name of an array without assigning it a value. This informs the compiler about the array's existence and type, enabling it to allocate memory during execution.
 
 <br>
 
@@ -24,7 +24,7 @@ int[] emptyArray;
 
 <br>
 
-> NOTE: Here, `emptyArray` is declared as an array of integers, but no memory is allocated for it yet, nor does it hold any specific data.
+> NOTE: Here, `emptyArray` is declared as an array of integers. No memory is allocated, and it contains no elements until instantiated.
 
 <br>
 
@@ -36,7 +36,7 @@ int[] emptyArray;
 
 <br>
 
-Instantiation involves allocating memory for the array on the heap. This is when the array object is actually created in memory. Instantiation can be separate from or combined with initialization.
+Instantiation is the process of allocating memory on the heap for the array, effectively creating the array object.
 
 <br>
 
@@ -46,9 +46,7 @@ int[] myArray = new int[5];
 
 <br>
 
-> NOTE: `myArray` is instantiated with space for 5 integer elements. 
-> 
-> At this point, `myArray` is a non-null array, but each element is initialized to the default value for integers, which is 0.
+> NOTE: `myArray` allocates memory for five integer elements, each initialized to the default integer value of 0.
 
 <br>
 
@@ -60,11 +58,11 @@ int[] myArray = new int[5];
 
 <br>
 
-Initialization refers to the process of assigning initial values to the array. This can be done at the time of declaration, or after instantiation. You can initialize an array inline at the point of declaration, or you can assign values to its elements at a later time.
+Initialization can occur at the point of declaration (inline) or after instantiation. Inline initialization directly assigns values to the array.
 
 <br>
 
-Inline initialization using legacy format:
+Legacy format:
 
 ```csharp
 int[] myArray = new int[5] { 1, 2, 3, 4, 5 };
@@ -72,7 +70,7 @@ int[] myArray = new int[5] { 1, 2, 3, 4, 5 };
 
 <br>
 
-Inline initialization using a shorter format:
+Shorter format:
 
 ```csharp
 int[] myArray = { 1, 2, 3, 4, 5 };
@@ -80,13 +78,11 @@ int[] myArray = { 1, 2, 3, 4, 5 };
 
 <br>
 
-As of C# 12 (.NET8), you can also initialize inline elements using [Collection Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/collection-expressions) (recommended):
-
+With C# 12 (.NET8) or higher, use [Collection Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/collection-expressions):
 
 ```csharp
 int[] myArray = [ 1, 2, 3, 4, 5 ];
 ```
-
 
 <br>
 
@@ -94,25 +90,21 @@ int[] myArray = [ 1, 2, 3, 4, 5 ];
 
 <br>
 
-
 ## Index Initialization
 
 <br>
 
-You can initialize all values within an array using their index `[i]`. 
-
-<br>
+Arrays can also be initialized using indices:
 
 ```csharp
 int[] numArray = new int[2];
-
-numArray[0] = 1; // Initializing first element
-numArray[1] = 2; // Initializing second element
+numArray[0] = 1; // First element
+numArray[1] = 2; // Second element
 ```
 
 <br>
 
-> NOTE: C# uses 0-based indexing, meaning the first value in the array is always at index `[0]` by default.
+> NOTE: C# arrays are zero-indexed, the first element is at index `0`.
 
 <br>
 
@@ -124,13 +116,11 @@ numArray[1] = 2; // Initializing second element
 
 <br>
 
-You can also access all values within an array using their index `[i]`.
-
-<br>
+Elements can be accessed using their index:
 
 ```csharp
-Console.WriteLine(myArray[0]); // Outputs: 1
-Console.WriteLine(myArray[1];) // Outputs: 2
+Console.WriteLine(myArray[0]); // 1
+Console.WriteLine(myArray[1]); // 2
 ```
 
 <br>
@@ -143,20 +133,16 @@ Console.WriteLine(myArray[1];) // Outputs: 2
 
 <br>
 
-C# supports multi-dimensional arrays, which are arrays with more than one dimension:
-
-<br>
+Multi-dimensional arrays allow storing data in a matrix form:
 
 ```csharp
-int[,] matrix = new int[3,3]; // A 3x3 matrix
+int[,] matrix = new int[3,3];  // A 3x3 matrix
 
-// Initialize the matrix
 matrix[0, 0] = 1;
 matrix[1, 1] = 2;
 matrix[2, 2] = 3;
 
-// Accessing elements
-int element = matrix[1, 1]; // 2
+int element = matrix[1, 1]; // Accessing the middle element, 2
 ```
 
 <br>
@@ -169,18 +155,16 @@ int element = matrix[1, 1]; // 2
 
 <br>
 
-Jagged arrays are arrays of arrays, and each "inner array" can be of different sizes:
-
-<br>
+Jagged arrays are arrays of arrays, with each "inner array" potentially differing in size:
 
 ```csharp
 int[][] jaggedArray = new int[3][];
-jaggedArray[0] = new int[3] { 1, 2, 3 };
-jaggedArray[1] = new int[1] { 4 };
-jaggedArray[2] = new int[2] { 5, 6 };
+jaggedArray[0] = [ 1, 2, 3 ];
+jaggedArray[1] = [ 4 ];
+jaggedArray[2] = [ 5, 6 ];
 
-// Accessing a jagged array element
-int jaggedElement = jaggedArray[0][1];  // 2
+int jaggedElement = jaggedArray[0][1]; // Accesses the second element of the first array
+Console.WriteLine(jaggedElement); // 2
 ```
 
 <br>
@@ -189,13 +173,14 @@ int jaggedElement = jaggedArray[0][1];  // 2
 
 <br>
 
-## Array Methods and Properties
+
+## Array Methods
 
 <br>
 
-Array methods in C# are built-in functions provided by the .NET Framework that allow developers to perform various operations on arrays, such as sorting, searching, modifying, and querying elements efficiently. 
+Array methods provide a wide range of functionalities, allowing manipulation, querying, and transformation of arrays. 
 
-These methods are part of the `System.Array` class and help facilitate common tasks involving array manipulation and management.
+Here's a detailed overview of some essential array methods:
 
 <br>
 
@@ -205,15 +190,16 @@ These methods are part of the `System.Array` class and help facilitate common ta
 
 #### AsReadOnly()
 
-- Namespace: System
-- Description: Wraps the original array in a ReadOnlyCollection<T> to prevent any modifications to it.
-- Example:
+- **Namespace**: `System`
+- **Description**: Wraps the original array in a `ReadOnlyCollection<T>` to prevent any modifications.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-var readOnlyPlanets = Array.AsReadOnly(planets);
-Console.WriteLine(readOnlyPlanets[2]); // Output: Earth
-```
+	```csharp
+	string[] planets = [ "Mercury", "Venus", "Earth", "Mars" ];
+	var readOnlyPlanets = Array.AsReadOnly(planets);
+  
+	Console.WriteLine(readOnlyPlanets[2]); // Earth
+	```
 
 <br>
 
@@ -223,15 +209,16 @@ Console.WriteLine(readOnlyPlanets[2]); // Output: Earth
 
 #### BinarySearch()
 
-- Namespace: System
-- Description: Searches for the specified object in a one-dimensional sorted array and returns the index of the object, if found.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for a specific object in a sorted one-dimensional array and returns the index of the object if found.
+- **Example**:
 
-```csharp
-string[] planets = { "Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Saturn", "Uranus", "Venus" };
-int index = Array.BinarySearch(planets, "Jupiter");
-Console.WriteLine(index); // Output: 1
-```
+	```csharp
+	string[] planets = [ "Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Saturn", "Uranus", "Venus" ];
+	int index = Array.BinarySearch(planets, "Jupiter");
+  
+	Console.WriteLine(index); // 1
+	```
 
 <br>
 
@@ -241,15 +228,16 @@ Console.WriteLine(index); // Output: 1
 
 #### Clear()
 
-- Namespace: System
-- Description: Sets a range of elements in the array to zero, to false, or to null, depending on the element type.
-- Example:
+- **Namespace**: `System`
+- **Description**: Sets a range of elements in the array to zero, false, or null, depending on the element type.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-Array.Clear(planets, 1, 2);
-Console.WriteLine(String.Join(", ", planets)); // Output: Mercury, , , Mars
-```
+	```csharp
+	string[] planets = [ "Mercury", "Venus", "Earth", "Mars" ];
+	Array.Clear(planets, 1, 2);
+  
+	Console.WriteLine(string.Join(", ", planets)); // Mercury, , , Mars
+	```
 
 <br>
 
@@ -259,15 +247,16 @@ Console.WriteLine(String.Join(", ", planets)); // Output: Mercury, , , Mars
 
 #### Clone()
 
-- Namespace: System
-- Description: Creates a shallow copy of the array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Creates a shallow copy of the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-string[] planetsClone = (string[])planets.Clone();
-Console.WriteLine(String.Join(", ", planetsClone)); // Output: Mercury, Venus, Earth, Mars
-```
+	```csharp
+	string[] planets = [ "Mercury", "Venus", "Earth", "Mars" ];
+	string[] planetsClone = (string[])planets.Clone();
+  
+	Console.WriteLine(string.Join(", ", planetsClone)); // Mercury, Venus, Earth, Mars
+	```
 
 <br>
 
@@ -277,16 +266,17 @@ Console.WriteLine(String.Join(", ", planetsClone)); // Output: Mercury, Venus, E
 
 #### ConstrainedCopy()
 
-- Namespace: System
-- Description: Copies a range of elements from an array starting at a particular index to another array starting at a particular index, ensuring that all changes are reverted if the copy does not succeed completely.
-- Example:
+- **Namespace**: `System`
+- **Description**: Copies a range of elements from one array to another, ensuring that all changes are reverted if the copy does not complete successfully.
+- **Example**:
 
-```csharp
-string[] sourcePlanets = { "Mercury", "Venus", "Earth", "Mars" };
-string[] targetPlanets = new string[4];
-Array.ConstrainedCopy(sourcePlanets, 0, targetPlanets, 0, 4);
-Console.WriteLine(String.Join(", ", targetPlanets)); // Output: Mercury, Venus, Earth, Mars
-```
+	```csharp
+	string[] sourcePlanets = { "Mercury", "Venus", "Earth", "Mars" };
+	string[] targetPlanets = new string[4];
+	Array.ConstrainedCopy(sourcePlanets, 0, targetPlanets, 0, 4);
+
+	Console.WriteLine(string.Join(", ", targetPlanets)); // Mercury, Venus, Earth, Mars
+	```
 
 <br>
 
@@ -296,15 +286,16 @@ Console.WriteLine(String.Join(", ", targetPlanets)); // Output: Mercury, Venus, 
 
 #### ConvertAll()
 
-- Namespace: System
-- Description: Converts an array of one type to an array of another type using the provided Converter<TInput,TOutput> delegate.
-- Example:
+- **Namespace**: `System`
+- **Description**: Converts an array of one type to another type using the provided `Converter<TInput,TOutput>` delegate.
+- **Example**:
 
-```csharp
-string[] planets = { "1", "2", "3", "4" };
-int[] planetNumbers = Array.ConvertAll(planets, int.Parse);
-Console.WriteLine(String.Join(", ", planetNumbers)); // Output: 1, 2, 3, 4
-```
+	```csharp
+	string[] planets = [ "1", "2", "3", "4" ];
+	int[] planetNumbers = Array.ConvertAll(planets, int.Parse);
+	
+	Console.WriteLine(string.Join(", ", planetNumbers)); // 1, 2, 3, 4
+	```
 
 <br>
 
@@ -314,16 +305,17 @@ Console.WriteLine(String.Join(", ", planetNumbers)); // Output: 1, 2, 3, 4
 
 #### Copy()
 
-- Namespace: System
-- Description: Copies elements from the source array to the destination array, starting at a particular index in both.
-- Example:
+- **Namespace**: `System`
+- **Description**: Copies elements from the source array to the destination array starting at a specified index.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-string[] planetsCopy = new string[4];
-Array.Copy(planets, planetsCopy, planets.Length);
-Console.WriteLine(String.Join(", ", planetsCopy)); // Output: Mercury, Venus, Earth, Mars
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	string[] planetsCopy = new string[4];
+	Array.Copy(planets, planetsCopy, planets.Length);
+	
+	Console.WriteLine(string.Join(", ", planetsCopy)); // Mercury, Venus, Earth, Mars
+	```
 
 <br>
 
@@ -333,16 +325,17 @@ Console.WriteLine(String.Join(", ", planetsCopy)); // Output: Mercury, Venus, Ea
 
 #### CopyTo()
 
-- Namespace: System
-- Description: Copies all the elements of the current one-dimensional array to the specified one-dimensional array starting at the specified destination array index.
-- Example:
+- **Namespace**: `System`
+- **Description**: Copies all elements of the current one-dimensional array to a specified array starting at the specified destination index.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-string[] destinationArray = new string[4];
-planets.CopyTo(destinationArray, 0);
-Console.WriteLine(String.Join(", ", destinationArray)); // Output: Mercury, Venus, Earth, Mars
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	string[] destinationArray = new string[4];
+	planets.CopyTo(destinationArray, 0);
+  
+	Console.WriteLine(string.Join(", ", destinationArray)); // Mercury, Venus, Earth, Mars
+	```
 
 <br>
 
@@ -352,18 +345,19 @@ Console.WriteLine(String.Join(", ", destinationArray)); // Output: Mercury, Venu
 
 #### CreateInstance()
 
-- Namespace: System
-- Description: Creates a new instance of an Array, specifying the type of its elements, the length of the Array, and optionally the lower bounds of each dimension.
-- Example:
+- **Namespace**: `System`
+- **Description**: Creates a new instance of an Array, specifying the type of its elements and the length of the Array, with optional lower bounds for each dimension.
+- **Example**:
 
-```csharp
-Array planetsArray = Array.CreateInstance(typeof(string), 4);
-planetsArray.SetValue("Mercury", 0);
-planetsArray.SetValue("Venus", 1);
-planetsArray.SetValue("Earth", 2);
-planetsArray.SetValue("Mars", 3);
-Console.WriteLine(String.Join(", ", planetsArray)); // Output: Mercury, Venus, Earth, Mars
-```
+	```csharp
+	Array planetsArray = Array.CreateInstance(typeof(string), 4);
+	planetsArray.SetValue("Mercury", 0);
+	planetsArray.SetValue("Venus", 1);
+	planetsArray.SetValue("Earth", 2);
+	planetsArray.SetValue("Mars", 3);
+  
+	Console.WriteLine(string.Join(", ", planetsArray)); // Mercury, Venus, Earth, Mars
+	```
 
 <br>
 
@@ -373,14 +367,14 @@ Console.WriteLine(String.Join(", ", planetsArray)); // Output: Mercury, Venus, E
 
 #### Empty()
 
-- Namespace: System
-- Description: Returns an empty array of the specified type.
-- Example:
+- **Namespace**: `System`
+- **Description**: Returns an empty array of the specified type.
+- **Example**:
 
-```csharp
-string[] emptyPlanets = Array.Empty<string>();
-Console.WriteLine(emptyPlanets.Length); // Output: 0
-```
+	```csharp
+	string[] emptyPlanets = Array.Empty<string>();
+	Console.WriteLine(emptyPlanets.Length); // 0
+	```
 
 <br>
 
@@ -390,15 +384,16 @@ Console.WriteLine(emptyPlanets.Length); // Output: 0
 
 #### Exists()
 
-- Namespace: System
-- Description: Determines whether an element that matches the conditions defined by the specified predicate exists within the array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Determines if any element in the array satisfies a condition defined by the specified predicate.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-bool hasEarth = Array.Exists(planets, planet => planet == "Earth");
-Console.WriteLine(hasEarth); // Output: True
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	bool hasEarth = Array.Exists(planets, planet => planet == "Earth");
+	
+	Console.WriteLine(hasEarth); // True
+	```
 
 <br>
 
@@ -408,15 +403,16 @@ Console.WriteLine(hasEarth); // Output: True
 
 #### Fill()
 
-- Namespace: System
-- Description: Fills all elements of an array with the same value.
-- Example:
+- **Namespace**: `System`
+- **Description**: Fills all elements of an array with a specified value.
+- **Example**:
 
-```csharp
-string[] planets = new string[5];
-Array.Fill(planets, "Pluto");
-Console.WriteLine(String.Join(", ", planets)); // Output: Pluto, Pluto, Pluto, Pluto, Pluto
-```
+	```csharp
+	string[] planets = new string[5];
+	Array.Fill(planets, "Pluto");
+	
+	Console.WriteLine(string.Join(", ", planets)); // Pluto, Pluto, Pluto, Pluto, Pluto
+	```
 
 <br>
 
@@ -426,15 +422,16 @@ Console.WriteLine(String.Join(", ", planets)); // Output: Pluto, Pluto, Pluto, P
 
 #### Find()
 
-- Namespace: System
-- Description: Searches for an element that matches the conditions defined by the specified predicate, and returns the first occurrence within the entire one-dimensional array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for an element that meets the conditions defined by a specified predicate, returning the first occurrence within the entire one-dimensional array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-string foundPlanet = Array.Find(planets, planet => planet.StartsWith("M"));
-Console.WriteLine(foundPlanet); // Output: Mercury
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	string foundPlanet = Array.Find(planets, planet => planet.StartsWith("M"));
+	
+	Console.WriteLine(foundPlanet); // Mercury
+	```
 
 <br>
 
@@ -444,15 +441,16 @@ Console.WriteLine(foundPlanet); // Output: Mercury
 
 #### FindAll()
 
-- Namespace: System
-- Description: Retrieves all the elements that match the conditions defined by the specified predicate.
-- Example:
+- **Namespace**: `System`
+- **Description**: Retrieves all elements that meet the conditions defined by the specified predicate.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Jupiter" };
-string[] mPlanets = Array.FindAll(planets, planet => planet.StartsWith("M"));
-Console.WriteLine(String.Join(", ", mPlanets)); // Output: Mercury, Mars
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Jupiter" };
+	string[] mPlanets = Array.FindAll(planets, planet => planet.StartsWith("M"));
+  
+	Console.WriteLine(string.Join(", ", mPlanets)); // Mercury, Mars
+	```
 
 <br>
 
@@ -462,15 +460,16 @@ Console.WriteLine(String.Join(", ", mPlanets)); // Output: Mercury, Mars
 
 #### FindIndex()
 
-- Namespace: System
-- Description: Searches for an element that matches the conditions defined by a specified predicate and returns the zero-based index of the first occurrence within the range of elements in the one-dimensional array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for an element that matches the conditions defined by a specified predicate and returns the zero-based index of the first occurrence within the range of elements in the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-int index = Array.FindIndex(planets, planet => planet == "Earth");
-Console.WriteLine(index); // Output: 2
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	int index = Array.FindIndex(planets, planet => planet == "Earth");
+	
+	Console.WriteLine(index); // 2
+	```
 
 <br>
 
@@ -480,15 +479,16 @@ Console.WriteLine(index); // Output: 2
 
 #### FindLast()
 
-- Namespace: System
-- Description: Searches for an element that matches the conditions defined by the specified predicate and returns the last occurrence within the entire one-dimensional array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for the last element that matches the conditions defined by a specified predicate within the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Earth" };
-string lastEarth = Array.FindLast(planets, planet => planet == "Earth");
-Console.WriteLine(lastEarth); // Output: Earth
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Earth" };
+	string lastEarth = Array.FindLast(planets, planet => planet == "Earth");
+	
+	Console.WriteLine(lastEarth); // Earth
+	```
 
 <br>
 
@@ -498,15 +498,16 @@ Console.WriteLine(lastEarth); // Output: Earth
 
 #### FindLastIndex()
 
-- Namespace: System
-- Description: Searches for an element that matches the conditions defined by the specified predicate and returns the zero-based index of the last occurrence within the range of elements in the one-dimensional array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for an element that matches the conditions defined by a specified predicate and returns the zero-based index of the last occurrence within the range of elements in the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Earth" };
-int lastIndex = Array.FindLastIndex(planets, planet => planet == "Earth");
-Console.WriteLine(lastIndex); // Output: 4
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Earth" };
+	int lastIndex = Array.FindLastIndex(planets, planet => planet == "Earth");
+	
+	Console.WriteLine(lastIndex); // 4
+	```
 
 <br>
 
@@ -516,14 +517,14 @@ Console.WriteLine(lastIndex); // Output: 4
 
 #### ForEach()
 
-- Namespace: System
-- Description: Performs the specified action on each element of the specified array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Executes a specified action on each element of the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-Array.ForEach(planets, planet => Console.WriteLine(planet));
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	Array.ForEach(planets, planet => Console.WriteLine(planet));
+	```
 
 <br>
 
@@ -533,17 +534,18 @@ Array.ForEach(planets, planet => Console.WriteLine(planet));
 
 #### GetEnumerator()
 
-- Namespace: System
-- Description: Returns an IEnumerator for the array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Returns an `IEnumerator` for the array, allowing iteration over the array's elements.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-IEnumerator enumerator = planets.GetEnumerator();
-while (enumerator.MoveNext()) {
-    Console.WriteLine(enumerator.Current); // Output: Mercury, Venus, Earth, Mars
-}
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	IEnumerator enumerator = planets.GetEnumerator();
+	
+	while (enumerator.MoveNext()) {
+		Console.WriteLine(enumerator.Current); // Mercury, Venus, Earth, Mars
+	}
+	```
 
 <br>
 
@@ -553,15 +555,16 @@ while (enumerator.MoveNext()) {
 
 #### GetLength()
 
-- Namespace: System
-- Description: Gets a 32-bit integer that represents the number of elements in the specified dimension of the Array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Retrieves the number of elements in a specified dimension of the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-int length = planets.GetLength(0);
-Console.WriteLine(length); // Output: 4
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	int length = planets.GetLength(0);
+	
+	Console.WriteLine(length); // 4
+	```
 
 <br>
 
@@ -571,15 +574,16 @@ Console.WriteLine(length); // Output: 4
 
 #### GetLongLength()
 
-- Namespace: System
-- Description: Gets a 64-bit integer that represents the number of elements in the specified dimension of the Array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Gets a 64-bit integer representing the number of elements in a specified dimension of the Array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-long longLength = planets.GetLongLength(0);
-Console.WriteLine(longLength); // Output: 4
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	long longLength = planets.GetLongLength(0);
+	
+	Console.WriteLine(longLength); // 4
+	```
 
 <br>
 
@@ -589,17 +593,16 @@ Console.WriteLine(longLength); // Output: 4
 
 #### GetLowerBound()
 
-- Namespace: System
-- Description: Gets the lower bound of the specified dimension in the array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Retrieves the lower bound of the specified dimension in the array, typically zero for zero-based indexing.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-int lowerBound = planets
-
-.GetLowerBound(0);
-Console.WriteLine(lowerBound); // Output: 0
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	int lowerBound = planets.GetLowerBound(0);
+	
+	Console.WriteLine(lowerBound); // 0
+	```
 
 <br>
 
@@ -609,15 +612,16 @@ Console.WriteLine(lowerBound); // Output: 0
 
 #### GetUpperBound()
 
-- Namespace: System
-- Description: Gets the upper bound of the specified dimension in the array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Returns the upper bound (maximum index) of the specified dimension in the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-int upperBound = planets.GetUpperBound(0);
-Console.WriteLine(upperBound); // Output: 3
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	int upperBound = planets.GetUpperBound(0);
+	
+	Console.WriteLine(upperBound); // 3
+	```
 
 <br>
 
@@ -627,15 +631,16 @@ Console.WriteLine(upperBound); // Output: 3
 
 #### GetValue()
 
-- Namespace: System
-- Description: Gets the value at the specified position in the one-dimensional Array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Retrieves the value at the specified position in the one-dimensional array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-object value = planets.GetValue(2);
-Console.WriteLine(value); // Output: Earth
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	object value = planets.GetValue(2);
+	
+	Console.WriteLine(value); // Earth
+	```
 
 <br>
 
@@ -645,15 +650,16 @@ Console.WriteLine(value); // Output: Earth
 
 #### IndexOf()
 
-- Namespace: System
-- Description: Searches for the specified object and returns the index of the first occurrence within the entire one-dimensional array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for the specified object and returns the index of its first occurrence within the entire one-dimensional array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-int index = Array.IndexOf(planets, "Earth");
-Console.WriteLine(index); // Output: 2
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	int index = Array.IndexOf(planets, "Earth");
+	
+	Console.WriteLine(index); // 2
+	```
 
 <br>
 
@@ -663,15 +669,16 @@ Console.WriteLine(index); // Output: 2
 
 #### Initialize()
 
-- Namespace: System
-- Description: Initializes every element of the value-type Array by calling the parameterless constructor of the value type.
-- Example:
+- **Namespace**: `System`
+- **Description**: Initializes every element of a value-type array by calling the parameterless constructor of the value type.
+- **Example**:
 
-```csharp
-int[] numbers = new int[5];
-Array.Initialize(numbers);
-Console.WriteLine(String.Join(", ", numbers)); // Output: 0, 0, 0, 0, 0
-```
+	```csharp
+	int[] numbers = new int[5];
+	Array.Initialize(numbers);
+	
+	Console.WriteLine(string.Join(", ", numbers)); // 0, 0, 0, 0, 0
+	```
 
 <br>
 
@@ -681,15 +688,16 @@ Console.WriteLine(String.Join(", ", numbers)); // Output: 0, 0, 0, 0, 0
 
 #### LastIndexOf()
 
-- Namespace: System
-- Description: Searches for the specified object and returns the index of the last occurrence within the entire one-dimensional array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Searches for the specified object and returns the index of its last occurrence within the entire one-dimensional array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Earth" };
-int lastIndex = Array.LastIndexOf(planets, "Earth");
-Console.WriteLine(lastIndex); // Output: 4
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars", "Earth" };
+	int lastIndex = Array.LastIndexOf(planets, "Earth");
+	
+	Console.WriteLine(lastIndex); // 4
+	```
 
 <br>
 
@@ -699,17 +707,18 @@ Console.WriteLine(lastIndex); // Output: 4
 
 #### Resize()
 
-- Namespace: System
-- Description: Changes the size of a one-dimensional array to the specified new size.
-- Example:
+- **Namespace**: `System`
+- **Description**: Resizes a one-dimensional array to the specified new size.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth" };
-Array.Resize(ref planets, 5);
-planets[3] = "Mars";
-planets[4] = "Jupiter";
-Console.WriteLine(String.Join(", ", planets)); // Output: Mercury, Venus, Earth, Mars, Jupiter
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth" };
+	Array.Resize(ref planets, 5);
+	planets[3] = "Mars";
+	planets[4] = "Jupiter";
+	
+	Console.WriteLine(string.Join(", ", planets)); // Mercury, Venus, Earth, Mars, Jupiter
+	```
 
 <br>
 
@@ -719,15 +728,16 @@ Console.WriteLine(String.Join(", ", planets)); // Output: Mercury, Venus, Earth,
 
 #### Reverse()
 
-- Namespace: System
-- Description: Reverses the sequence of the elements in the entire one-dimensional array or in the specified range of the array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Reverses the sequence of elements in the entire one-dimensional array or a portion of it.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-Array.Reverse(planets);
-Console.WriteLine(String.Join(", ", planets)); // Output: Mars, Earth, Venus, Mercury
-```
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	Array.Reverse(planets);
+	
+	Console.WriteLine(string.Join(", ", planets)); // Mars, Earth, Venus, Mercury
+	```
 
 <br>
 
@@ -737,18 +747,19 @@ Console.WriteLine(String.Join(", ", planets)); // Output: Mars, Earth, Venus, Me
 
 #### SetValue()
 
-- Namespace: System
-- Description: Sets a value to the element at the specified position in the one-dimensional Array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Assigns a specified value to the element at the indicated position in a one-dimensional array.
+- **Example**:
 
-```csharp
-string[] planets = new string[4];
-planets.SetValue("Mercury", 0);
-planets.SetValue("Venus", 1);
-planets.SetValue("Earth", 2);
-planets.SetValue("Mars", 3);
-Console.WriteLine(String.Join(", ", planets)); // Output: Mercury, Venus, Earth, Mars
-```
+	```csharp
+	string[] planets = new string[4];
+	planets.SetValue("Mercury", 0);
+	planets.SetValue("Venus", 1);
+	planets.SetValue("Earth", 2);
+	planets.SetValue("Mars", 3);
+	
+	Console.WriteLine(string.Join(", ", planets)); // Mercury, Venus, Earth, Mars
+	```
 
 <br>
 
@@ -758,15 +769,16 @@ Console.WriteLine(String.Join(", ", planets)); // Output: Mercury, Venus, Earth,
 
 #### Sort()
 
-- Namespace: System
-- Description: Sorts the elements in an entire one-dimensional array using the IComparable interface of each element of the Array.
-- Example:
+- **Namespace**: `System`
+- **Description**: Sorts the elements in an entire one-dimensional array using the `IComparable` interface of each element of the array.
+- **Example**:
 
-```csharp
-string[] planets = { "Mars", "Earth", "Venus", "Mercury" };
-Array.Sort(planets);
-Console.WriteLine(String.Join(", ", planets)); // Output: Earth, Mars, Mercury, Venus
-```
+	```csharp
+	string[] planets = { "Mars", "Earth", "Venus", "Mercury" };
+	Array.Sort(planets);
+	
+	Console.WriteLine(string.Join(", ", planets)); // Earth, Mars, Mercury, Venus
+	```
 
 <br>
 
@@ -776,43 +788,16 @@ Console.WriteLine(String.Join(", ", planets)); // Output: Earth, Mars, Mercury, 
 
 #### TrueForAll()
 
-- Namespace: System
-- Description: Determines whether every element in the array matches the conditions defined by the specified predicate.
-- Example:
+- **Namespace**: `System`
+- **Description**: Determines whether every element of the array matches the conditions defined by the specified predicate.
+- **Example**:
 
-```csharp
-string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
-bool allStartWithM = Array.TrueForAll(planets, planet => planet.StartsWith("M"));
-Console.WriteLine(allStartWithM); // Output: False
-```
-
-<br>
-
----
-
-<br>
-
-## Using ArrayList
-
-<br>
-
-Before generics were introduced with .NET 2.0, the `ArrayList` class was commonly used. It can hold items of any type and automatically expands as you add items.
-
-<br>
-
-```csharp
-ArrayList myArrayList = new ArrayList();
-myArrayList.Add(1);
-myArrayList.Add("Two");
-myArrayList.Add(3.0);
-
-// Accessing elements
-int firstElement = (int)myArrayList[0]; // Need to cast since ArrayList stores objects
-```
-
-<br>
-
-> NOTE: It's generally better to use `List<T>` from the `System.Collections.Generic` namespace because it's type-safe and generally more efficient than `ArrayList`.
+	```csharp
+	string[] planets = { "Mercury", "Venus", "Earth", "Mars" };
+	bool allStartWithM = Array.TrueForAll(planets, planet => planet.StartsWith("M"));
+	
+	Console.WriteLine(allStartWithM); // False
+	```
 
 <br>
 
@@ -820,10 +805,4 @@ int firstElement = (int)myArrayList[0]; // Need to cast since ArrayList stores o
 
 <br>
 
-## Best Practices
 
-<br>
-
-- **Use Specific Types**: Prefer `List<T>` over `ArrayList` for type safety and performance.
-- **Know Your Needs**: Use multi-dimensional arrays for matrices or tables, and jagged arrays when dealing with data of varying lengths.
-- **Initialize Upon Declaration**: When possible, initialize your array upon declaration to make the code cleaner and easier to understand.
