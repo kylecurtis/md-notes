@@ -54,7 +54,7 @@ In the command above, `-u` is used to state the website we're scanning, `-w`�
 
 You will see that GoBuster scans the website with each word in the list, finding pages that exist on the site. GoBuster will have told you the pages it found in the list of page/directory names (indicated by Status: 200).
 
-![[GoBuster-Status-200.png]]
+![[0-Assets/TryHackMe/Intro-To-Cyber-Security/GoBuster-Status-200.png]]
 
 <br>
 
